@@ -7,19 +7,19 @@ n_2 = [:a, :b, :c, :d]
 
 Benchmark.ips do |x|
   x.report 'Case' do
-  	500.times do
-  		t = n.sample
-  		case t
-  		when 'a'
-  			0
-  		when 'b'
-  			1
-  		when 'c'
-  			2
-  		when 'd'
-  			3
-  		end
-  	end
+    500.times do
+      t = n.sample
+      case t
+      when 'a'
+	0
+      when 'b'
+	1
+      when 'c'
+	2
+      when 'd'
+	3
+      end
+    end
   end
 
   x.report 'If / Else If' do
