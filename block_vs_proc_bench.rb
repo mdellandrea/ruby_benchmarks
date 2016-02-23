@@ -3,25 +3,25 @@
 require 'benchmark/ips'
 
 def block_call &block
-	block.call
+  block.call
 end
 
 def just_yield
-	yield
+  yield
 end
 
 Benchmark.ips do |x|
-	x.report "Call Block" do
-		500.times do
-			block_call { 1 + 1 }
-		end
-	end
+  x.report "Call Block" do
+    500.times do
+      block_call { 1 + 1 }
+    end
+  end
 
-	x.report "Yield to Block" do
-		500.times do
-			just_yield { 1 + 1 }
-		end
-	end
+  x.report "Yield to Block" do
+    500.times do
+      just_yield { 1 + 1 }
+    end
+  end
 
-	x.compare!
+  x.compare!
 end

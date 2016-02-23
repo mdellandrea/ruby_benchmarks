@@ -15,25 +15,27 @@ def match_str_expr_frozen col
 end
 
 GC.disable
- a = GC.stat[:heap_live_slots]
+  a = GC.stat[:heap_live_slots]
 
     z.each do |x|
       match_str_expr x
     end
 
- b = GC.stat[:heap_live_slots]
- puts "Using the str method created #{(b-a) -1} object(s)"
+  b = GC.stat[:heap_live_slots]
 GC.enable
+
+puts "Using the str method created #{(b-a) -1} object(s)"
 
 #=======================================================================================
 
 GC.disable
- a = GC.stat[:heap_live_slots]
+  c = GC.stat[:heap_live_slots]
 
     z.each do |x|
       match_str_expr_frozen x
     end
 
- b = GC.stat[:heap_live_slots]
- puts "Using the frozen str method created #{(b-a) -1} object(s)"
+  d = GC.stat[:heap_live_slots]
 GC.enable
+
+puts "Using the frozen str method created #{(d-c) -1} object(s)"
