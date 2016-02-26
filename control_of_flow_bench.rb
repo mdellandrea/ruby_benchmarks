@@ -37,5 +37,21 @@ Benchmark.ips do |x|
     end
   end
 
+  x.report 'Case w/ Symbols' do
+    500.times do
+      t = n_2.sample
+      case t
+      when :a
+	0
+      when :b
+	1
+      when :c
+	2
+      when :d
+	3
+      end
+    end
+  end
+
   x.compare!
 end
